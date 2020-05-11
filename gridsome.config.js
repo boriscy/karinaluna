@@ -28,5 +28,7 @@ module.exports = {
         }
       }
     },
-  ]
+  ],
+  siteUrl: 'https://boriscy.github.io',
+  pathPrefix: '/karinaluna'
 }
