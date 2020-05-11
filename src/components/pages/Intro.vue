@@ -16,7 +16,10 @@
 </template>
 
 <script>
+const bgImage = require('@/assets/images/panoramic-1.jpg')
+
 export default {
+  bgImage: bgImage,
   image: {
     width: 4450,
     height: 1080
@@ -24,29 +27,40 @@ export default {
   data () {
     return {
       innerWidth: this.$options.image.width,
-      innerHeight: this.$options.image.height,
+      innerHeight: this.$options.image.height / 2,
       offsetX: 0, offsetY: 0, opacity: 0,
-      textHeight: 0, initHeight: 0
+      textHeight: 0, initHeight: 0, bgImageWidth: 0
     }
   },
   computed: {
     styles () {
       return {
         backgroundSize: this.backgroundSize,
-        backgroundPosition: `${this.offsetX}px 0px`
+        backgroundPosition: `${this.offsetX}px 0px`,
+        backgroundImage: `url(${bgImage})`
       }
     },
     backgroundSize () {
       const ratio = this.innerHeight / this.$options.image.height
       return `${ratio * this.$options.image.width}px ${this.innerHeight}px`
+    },
+    imgWidth () {
+      return (this.innerHeight / 1080) * this.$options.image.width
+    },
+    imgScroll () {
+      return (this.imgWidth - window.innerWidth + this.offsetX - 20) > 0
     }
   },
   methods: {
     moveBackground () {
-      this.offsetX = -window.pageYOffset
+      if (this.imgScroll || window.pageYOffset * 2 < -this.offsetX) {
+        this.offsetX = -window.pageYOffset * 2
+      } else {
+        this.offsetX = window.innerWidth - this.imgWidth
+      }
     },
     setSize () {
-      this.innerHeight = window.innerHeight
+      this.innerHeight = window.innerHeight > 600 ? window.innerHeight : 600
     },
     setTextOpacity () {
       if (window.pageYOffset <= this.initHeight) {
@@ -72,7 +86,7 @@ export default {
 
 <style lang="scss">
 .intro.background {
-  background-image: url(/panoramic-1.jpg);
+  //background-image: url(/images/panoramic-1.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 4450px 1080px;
