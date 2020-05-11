@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/elements/title.sass";
+
+h1, h2, h3 {
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 3em;
+}
