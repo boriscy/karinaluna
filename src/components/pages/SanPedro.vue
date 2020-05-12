@@ -43,8 +43,8 @@ export default {
 .san-pedro.background {
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: 0px 0px;
+  background-size: cover;
+  background-position: center;
   height: 1000px;
   padding-top: 70px;
 }
