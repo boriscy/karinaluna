@@ -1,6 +1,6 @@
 <template>
   <div class="intro background" :style="styles">
-    <div class="cont">
+    <div class="cont" :style="{opacity: contOpacity}">
       <div class="layout">
         <h1 class="is-size-1 is-size-3-mobile has-text-centered">{{ $t('index.heaven is where') }}</h1>
 
@@ -29,7 +29,8 @@ export default {
       innerWidth: this.$options.image.width,
       innerHeight: this.$options.image.height / 2,
       offsetX: 0, offsetY: 0, opacity: 0,
-      textHeight: 0, initHeight: 0, bgImageWidth: 0
+      textHeight: 0, initHeight: 0, bgImageWidth: 0,
+      contOpacity: 1
     }
   },
   computed: {
@@ -58,6 +59,8 @@ export default {
       } else {
         this.offsetX = window.innerWidth - this.imgWidth
       }
+
+      //if ((window.pageYOffset + this.initHeight) > )
     },
     setSize () {
       this.innerHeight = window.innerHeight > 600 ? window.innerHeight : 600
@@ -69,6 +72,13 @@ export default {
         this.textHeight = this.initHeight
         this.opacity = (window.pageYOffset - this.initHeight) / 500
       }
+    },
+    setContOpacity () {
+      if ((window.innerHeight + window.pageYOffset) > 1500) {
+        this.contOpacity = (1500 - window.pageYOffset) / 1500
+      } else {
+        this.contOpacity = 1
+      }
     }
   },
   mounted () {
@@ -79,6 +89,7 @@ export default {
     setInterval(() => {
       this.moveBackground()
       this.setTextOpacity()
+      this.setContOpacity()
     }, 20)
   }
 }
@@ -86,12 +97,11 @@ export default {
 
 <style lang="scss">
 .intro.background {
-  //background-image: url(/images/panoramic-1.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 4450px 1080px;
   background-position: 0px 0px;
-  height: 2000px;//100vh;
+  height: 1500px;
   padding-top: 70px;
 }
 .intro {

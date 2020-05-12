@@ -66,16 +66,13 @@ body {
 .layout {
   max-width: 760px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 4px 20px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /*margin-bottom: 20px;*/
-  //height: 60px;
 }
 
 .nav__link {
@@ -97,7 +94,7 @@ body {
   }
   &.top {
     transition: all 500ms;
-    height: 60px;
+    height: 50px;
     background: rgba(0, 0, 0, 0.3);
   }
 }
