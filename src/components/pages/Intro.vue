@@ -16,10 +16,12 @@
 </template>
 
 <script>
+import fnSpeed from '~/mixins/fn-speed'
 const bgImage = require('@/assets/images/panoramic-1.jpg')
 
 export default {
   bgImage: bgImage,
+  mixins: [fnSpeed],
   image: {
     width: 4450,
     height: 1080
@@ -59,8 +61,6 @@ export default {
       } else {
         this.offsetX = window.innerWidth - this.imgWidth
       }
-
-      //if ((window.pageYOffset + this.initHeight) > )
     },
     setSize () {
       this.innerHeight = window.innerHeight > 600 ? window.innerHeight : 600
@@ -74,7 +74,7 @@ export default {
       }
     },
     setContOpacity () {
-      if ((window.innerHeight + window.pageYOffset) > 1500) {
+      if ((window.innerHeight + window.pageYOffset) > 1550) {
         this.contOpacity = (1500 - window.pageYOffset) / 1500
       } else {
         this.contOpacity = 1
@@ -82,15 +82,22 @@ export default {
     }
   },
   mounted () {
-    this.initHeight = this.$refs.textCont.offsetHeight + 10
+    this.initHeight = this.$refs.textCont.offsetHeight + 30
     window.onresize = () => { this.setSize() }
     this.setSize()
 
+    window.onscroll = () => {
+      this.moveBackground()
+      this.setTextOpacity()
+      this.setContOpacity()
+    }
+    /*
     setInterval(() => {
       this.moveBackground()
       this.setTextOpacity()
       this.setContOpacity()
     }, 20)
+    */
   }
 }
 </script>
@@ -111,7 +118,7 @@ export default {
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center; /* aligns on vertical for column */
+    justify-content: center;
     align-items: center;
     .layout {
       background: rgba(0, 0, 0, 0.2);

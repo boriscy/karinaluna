@@ -8790,7 +8790,14 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.10:
+vue-waypoint@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/vue-waypoint/-/vue-waypoint-3.4.1.tgz#c0f40cb9542eb904a98f41fdad2b8c708488dd97"
+  integrity sha512-hMrHPmM46d9YgKt6lZ6Pq6ixDJylg1DbMmVYcHheF0fd37rZFmWTn0kqa7G4aZGA/wzM+jl3eYVsAA9aJWuZJQ==
+  dependencies:
+    vue "^2.5.2"
+
+vue@^2.5.2, vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==

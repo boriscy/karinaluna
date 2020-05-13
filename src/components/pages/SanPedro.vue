@@ -1,6 +1,7 @@
 <template>
   <div class="san-pedro background" :style="styles">
     <div class="cont">
+      <!--<g-image src="~/assets/images/cactus.png" style="position:absolute;z-index:-1"/>-->
       <div class="layout">
         <h1 class="is-size-1 is-size-3-mobile has-text-centered">
           San Pedro
@@ -12,7 +13,7 @@
           </p>
         </div>
 
-        <g-image src="~/assets/images/cactus.png"/>
+        <!--<g-image src="~/assets/images/cactus.png"/>-->
 
       </div>
     </div>
